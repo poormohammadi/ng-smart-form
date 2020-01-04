@@ -1,0 +1,32 @@
+<mat-form-field>
+  <mat-chip-list #chipList  [formControl]="formControl">
+    <ng-container *ngIf="multiple">
+      <mat-chip *ngFor="let item of value" (removed)="remove(item)">
+        {{item}}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+    </ng-container>
+    <ng-container *ngIf="!multiple">
+      <mat-chip *ngIf="value" (removed)="remove(value)">
+        {{value}}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+    </ng-container>
+
+    <input *ngIf="multiple || !value" placeholder="{{placeholder}}{{required && ' *'}}" [matAutocomplete]="auto" [matChipInputFor]="chipList"
+      (input)='input($event)' (matChipInputTokenEnd)="selected($event)" [matChipInputAddOnBlur]="shouldAddOnBlur"
+      (blur)="blur($event)" #autoCompleteInput >
+  </mat-chip-list>
+  <mat-hint>{{hint && hint}}</mat-hint>
+
+  <mat-autocomplete  #auto="matAutocomplete" (optionSelected)="selected($event)">
+    <mat-option [value]="optionValueLabels ?
+        (optionValueLabels.value ?
+          (options[item] && options[item][optionValueLabels.value]) : options[item])
+            : options[item]" *ngFor="let item of options2">
+      {{options[item]
+      && (optionValueLabels ? (optionValueLabels.label ? options[item][optionValueLabels.label] : options[item]) :
+      options[item])}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

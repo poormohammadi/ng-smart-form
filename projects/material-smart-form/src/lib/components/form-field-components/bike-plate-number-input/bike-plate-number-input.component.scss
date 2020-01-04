@@ -1,0 +1,37 @@
+$transition: 0.4s;
+
+mat-form-field {
+  width: 100%;
+}
+.flex {
+  display: flex;
+
+  input {
+    width: 50%;
+  }
+}
+input {
+  text-align: center;
+}
+.hidden {
+  opacity: 0;
+}
+span {
+  transition: $transition;
+  opacity: 0;
+}
+.visible {
+  opacity: 1 !important;
+}
+button {
+  opacity: 0;
+  transition: $transition;
+}
+.imghint {
+  position: absolute;
+  img {
+    max-width: 45px;
+    position: absolute;
+    top: -16px;
+  }
+}

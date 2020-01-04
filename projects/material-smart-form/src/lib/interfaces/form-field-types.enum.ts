@@ -1,0 +1,16 @@
+export enum FormFieldTypes {
+  Text = 'Text',
+  TextArea = 'TextArea',
+  Number = 'Number',
+  Password = 'Password',
+  Select = 'Select',
+  File = 'File',
+  Checkbox = 'Checkbox',
+  Date = 'Date',
+  Datetime = 'Datetime',
+  Hidden = 'Hidden',
+  AutoComplete = 'AutoComplete',
+  Time = 'Time',
+  VanPlate = 'VanPlate',
+  BikePlate = 'BikePlate',
+}

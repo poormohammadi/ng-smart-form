@@ -1,0 +1,24 @@
+<div class="datetime-container">
+  <mat-form-field class="datetime-date">
+    <input matInput [matDatepicker]="picker" [placeholder]="placeholder"
+      (dateInput)="onDateChange('input', $event)" (dateChange)="onDateChange('change', $event)"
+      [value]="isoString(value)" [errorStateMatcher]="errorMatcher" (click)="picker.open()" readonly
+      [required]="required" [formControl]="formControl">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <button mat-icon-button matSuffix (click)='reset()' [disabled]='status === FormControlStatus.Disabled'>
+      <mat-icon>close</mat-icon>
+    </button>
+
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field class="datetime-time">
+    <input matInput (change)="onTimeChange($event)" type="time" [errorStateMatcher]="errorMatcher"
+      [valueAsNumber]="timeOfDayInMill(value)">
+    <mat-hint>
+      {{(hint) && hint}}
+    </mat-hint>
+
+    <mat-error>
+    </mat-error>
+  </mat-form-field>
+</div>

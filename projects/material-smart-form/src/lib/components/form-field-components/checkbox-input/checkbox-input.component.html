@@ -1,0 +1,8 @@
+<div>
+  <section class="checkbox-section">
+    <mat-checkbox [(ngModel)]="value" Indeterminate [disabled]='status === FormControlStatus.Disabled'
+      (change)='handleSelectChange($event)' [required]="required">
+      {{placeholder}}
+    </mat-checkbox>
+  </section>
+</div>

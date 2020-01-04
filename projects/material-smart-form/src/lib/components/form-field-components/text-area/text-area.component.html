@@ -1,0 +1,10 @@
+<mat-form-field class="">
+  <textarea matInput [errorStateMatcher]="errorMatcher" [disabled]='status === FormControlStatus.Disabled' [dir]='dir' name="{{name}}"
+    [placeholder]="placeholder" [(ngModel)]="value" [required]="required"></textarea>
+  <mat-hint>
+    {{(hint) && hint}}
+  </mat-hint>
+  <mat-error>
+    {{(hint) && hint}}
+  </mat-error>
+</mat-form-field>

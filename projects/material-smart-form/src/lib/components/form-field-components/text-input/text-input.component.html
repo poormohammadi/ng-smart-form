@@ -1,0 +1,11 @@
+<mat-form-field>
+  <input matInput [name]="name" [placeholder]="placeholder" [(ngModel)]="value" [type]="type"
+    [errorStateMatcher]="errorMatcher" [disabled]='status === FormControlStatus.Disabled' [dir]='dir'
+    [required]="required">
+  <mat-hint>
+    {{(hint) && hint}}
+  </mat-hint>
+  <mat-error>
+    {{(hint) && hint}}
+  </mat-error>
+</mat-form-field>

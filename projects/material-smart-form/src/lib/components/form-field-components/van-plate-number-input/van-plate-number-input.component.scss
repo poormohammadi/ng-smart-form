@@ -1,0 +1,65 @@
+$transition: 0.4s;
+
+mat-form-field {
+  width: 100%;
+}
+.plate {
+  // this is because of removin mat-form-field
+  display: flex;
+  border-bottom: 1px solid #a7a7a7;
+  height: 29px;
+  align-items: center;
+
+  &.invalid {
+    border-bottom: 1px solid red;
+  }
+  .flex {
+    display: flex;
+
+    input {
+      width: 25%;
+    }
+  }
+  .palte-letter {
+    text-align: center;
+  }
+  span {
+    transition: $transition;
+    border: 1px solid transparent;
+
+    &.plate-space {
+      border: 1px solid #e4e4e4;
+    }
+  }
+  input {
+    text-align: center;
+  }
+  mat-select {
+    transition: $transition;
+  }
+}
+button {
+  transition: $transition;
+}
+.hidden {
+  // opacity: 0;
+}
+label {
+  color: grey;
+  font-size: 12px;
+  position: absolute;
+  transform: translate(0px, -17px);
+
+  &.invalid {
+    color: red;
+  }
+}
+div.hint {
+  position: absolute;
+
+  img {
+    max-width: 100px;
+    position: absolute;
+    top: 5px;
+  }
+}

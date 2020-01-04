@@ -1,0 +1,16 @@
+<div class="section">
+  <button type="button" mat-stroked-button color="primary" (click)="fileInput.click()" [disabled]='status === FormControlStatus.Disabled'>Choose
+    {{placeholder}}
+    <span *ngIf="required">
+      *
+    </span>
+  </button>
+  <input hidden type="file" #fileInput (change)="onFileChange($event)" />
+  <span class="file"> {{value && value.name}}</span>
+  <mat-hint>
+    {{(hint) && hint}}
+  </mat-hint>
+
+  <mat-error>
+  </mat-error>
+</div>

@@ -1,0 +1,11 @@
+<mat-form-field>
+  <input matInput [matDatepicker]="picker" [placeholder]="placeholder"
+    [disabled]='status === FormControlStatus.Disabled' (dateInput)="onDateChange('input', $event)"
+    (dateChange)="onDateChange('change', $event)" [value]="isoString(value)" [errorStateMatcher]="errorMatcher"
+    [(ngModel)]="value" (click)="picker.open()" readonly [required]="required">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <button mat-icon-button matSuffix (click)='reset()' [disabled]='status === FormControlStatus.Disabled'>
+    <mat-icon>close</mat-icon>
+  </button>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>

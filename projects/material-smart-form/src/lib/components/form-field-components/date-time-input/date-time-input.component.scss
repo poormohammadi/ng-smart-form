@@ -1,0 +1,14 @@
+.datetime-container {
+  display: flex;
+
+  .datetime-date {
+    display: inline;
+    width: 60%;
+  }
+
+  .datetime-time {
+    position: relative;
+    top: -1px;
+    width: 40%;
+  }
+}

@@ -1,0 +1,40 @@
+<label [ngClass]="{'invalid' : !isValid}">
+  {{placeholder}} {{required && '*'}}
+</label>
+<div class="plate" [ngClass]="{'invalid' : !isValid}">
+  <div class="flex">
+    <input [errorStateMatcher]="errorMatcher" matInput name="{{name}}" [(ngModel)]="first"
+      [disabled]='status === FormControlStatus.Disabled' (ngModelChange)='updateVanPlate()' maxlength="2" minlength="2"
+      appMoveNextByMaxLength [required]="required" (focus)="onFocus()" (blur)="onBlur()" placeholder="11">
+    <span [ngClass]="{'plate-space' : isFocused}"></span>
+    <mat-select [ngClass]="{'hidden' : !isFocused}" [disabled]='status === FormControlStatus.Disabled'
+      (selectionChange)='updateVanPlate()' [(ngModel)]='second' class="palte-letter" (focus)="onFocus()"
+      (blur)="onBlur()">
+      <mat-option [value]="item" *ngFor="let item of persianLetters">
+        {{item}}
+      </mat-option>
+    </mat-select>
+    <span [ngClass]="{'plate-space' : isFocused}"></span>
+    <input matInput [disabled]='status === FormControlStatus.Disabled' [(ngModel)]="third"
+      (ngModelChange)='updateVanPlate()' maxlength="3" minlength="3" appMoveNextByMaxLength (focus)="onFocus()"
+      (blur)="onBlur()" placeholder="111">
+    <span [ngClass]="{'plate-space' : isFocused}"></span>
+    <input matInput [disabled]='status === FormControlStatus.Disabled' [(ngModel)]="fourth"
+      (ngModelChange)='updateVanPlate()' maxlength="2" minlength="2" (focus)="onFocus()" (blur)="onBlur()"
+      placeholder="11">
+  </div>
+  <button mat-icon-button matSuffix (click)='reset()' [disabled]='status === FormControlStatus.Disabled'
+    [ngClass]="{'hidden' : !value}">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <!-- <mat-hint>
+    {{(hint) && hint}}
+  </mat-hint>
+  <mat-error>
+    {{(hint) && hint}}
+  </mat-error> -->
+</div>
+<div class="hint">
+  <img src="../../../../../assets/images/plate-numbers/vanplate.png">
+</div>

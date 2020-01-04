@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "material-smart-form": [
+        "dist/material-smart-form"
+      ],
+      "material-smart-form/*": [
+        "dist/material-smart-form/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

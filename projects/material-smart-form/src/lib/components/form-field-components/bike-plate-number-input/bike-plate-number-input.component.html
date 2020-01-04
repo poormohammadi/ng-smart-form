@@ -1,0 +1,26 @@
+<mat-form-field class="plate" appearance="legacy">
+  <mat-label>{{placeholder}}</mat-label>
+
+  <div class="flex">
+    <input [errorStateMatcher]='errorMatcher' matInput name="{{name}}" [placeholder]="'111'" [(ngModel)]="first"
+      [disabled]='status === FormControlStatus.Disabled' (ngModelChange)='updateBikePlate()' maxlength="3" minlength="3"
+      appMoveNextByMaxLength [required]="required" (focus)="onFocus()" (blur)="onBlur()">
+    <span [ngClass]="{'visible' : isFocused}">-</span>
+    <input matInput [disabled]='status === FormControlStatus.Disabled' [(ngModel)]="second"
+      (ngModelChange)='updateBikePlate()' maxlength="5" minlength="5" [errorStateMatcher]='errorMatcher'
+      (focus)="onFocus()" (blur)="onBlur()" placeholder="11111">
+  </div>
+  <button mat-icon-button matSuffix (click)='reset()' [disabled]='status === FormControlStatus.Disabled'
+    [ngClass]="{'visible' : value}">
+    <mat-icon>close</mat-icon>
+  </button>
+  <mat-hint>
+    {{(hint) && hint}}
+  </mat-hint>
+  <mat-error>
+    {{(hint) && hint}}
+  </mat-error>
+</mat-form-field>
+<div class="imghint">
+  <img src="../../../../../assets/images/plate-numbers/bikeplate.png">
+</div>

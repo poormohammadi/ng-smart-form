@@ -1,0 +1,19 @@
+<mat-form-field>
+  <mat-select [placeholder]="placeholder" [(ngModel)]="value" [errorStateMatcher]="errorMatcher"
+    [multiple]="multiple" [compareWith]="compareFn" [disabled]='status === FormControlStatus.Disabled'
+    (valueChange)='handleSelectChange($event)' [required]="required">
+    <mat-option
+      [value]="optionValueLabels ? (optionValueLabels.value ? options[item][optionValueLabels.value] : options[item]) : options[item]"
+      *ngFor="let item of options2">
+      {{options[item]
+      && (optionValueLabels ? (optionValueLabels.label ? options[item][optionValueLabels.label] : options[item]) :
+      options[item])}}
+    </mat-option>
+  </mat-select>
+  <mat-hint>
+    {{(hint) && hint}}
+  </mat-hint>
+  <mat-error>
+    {{(hint) && hint}}
+  </mat-error>
+</mat-form-field>

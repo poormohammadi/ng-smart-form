@@ -1,0 +1,11 @@
+<mat-form-field class="">
+  <input matInput [placeholder]="placeholder" [ngModel]="value | number" type="tel"
+    [errorStateMatcher]="errorMatcher" [disabled]='status === FormControlStatus.Disabled'
+    (ngModelChange)="numberChanged($event)" [required]="required">
+  <mat-hint>
+    {{(hint) && hint}}
+  </mat-hint>
+  <mat-error>
+    {{(hint) && hint}}
+  </mat-error>
+</mat-form-field>
