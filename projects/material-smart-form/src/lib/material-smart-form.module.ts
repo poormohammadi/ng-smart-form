@@ -20,14 +20,13 @@ import {
   VanPlateNumberInputComponent,
 } from './components/form-field-components/van-plate-number-input/van-plate-number-input.component';
 import { FormFieldComponent } from './components/form-field/form-field.component';
-import { MaterialSmartFormComponent } from './material-smart-form.component';
 import { MaterialModule } from './material/material.module';
 import { CamelCaseToHumanPipe } from './pipes/camel-case-to-human/camel-case-to-human.pipe';
+import { SmartFormComponent } from './components/smart-form/smart-form.component';
 
 
 @NgModule({
   declarations: [
-    MaterialSmartFormComponent,
     FormFieldComponent,
     TextInputComponent,
     TextAreaComponent,
@@ -41,13 +40,14 @@ import { CamelCaseToHumanPipe } from './pipes/camel-case-to-human/camel-case-to-
     TimeInputComponent,
     VanPlateNumberInputComponent,
     BikePlateNumberInputComponent,
-    CamelCaseToHumanPipe
+    CamelCaseToHumanPipe,
+    SmartFormComponent,
   ],
   imports: [
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
   ],
-  exports: [MaterialSmartFormComponent]
+  exports: [SmartFormComponent]
 })
 export class MaterialSmartFormModule { }
