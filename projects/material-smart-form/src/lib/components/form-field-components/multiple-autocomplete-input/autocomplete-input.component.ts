@@ -10,7 +10,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material';
+import { ErrorStateMatcher, MatChipInputEvent, MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material';
 import { FormFieldTypes } from '../../../interfaces/form-field-types.enum';
 import { FormControlStatus } from '../../../interfaces/form-control-status.enum';
 import { OptionValueLabels } from '../../../interfaces/option-value-labels';
@@ -27,10 +27,12 @@ import { OptionValueLabels } from '../../../interfaces/option-value-labels';
     }
   ]
 })
+
 export class AutocompleteInputComponent implements ControlValueAccessor, OnInit, OnChanges {
 
   options2: string[];
   shouldAddOnBlur: boolean;
+  label: any = [];
 
   private innerValue: any;
   get value(): any {
@@ -53,7 +55,7 @@ export class AutocompleteInputComponent implements ControlValueAccessor, OnInit,
   @Input() formControl: FormControl;
   @Input() required: boolean;
   @Input() errorMatcher: ErrorStateMatcher;
-  @Input() options: object;
+  @Input() options: any[];
   @Input() multiple: boolean = true;
   @Input() optionValueLabels: OptionValueLabels;
 
@@ -61,6 +63,7 @@ export class AutocompleteInputComponent implements ControlValueAccessor, OnInit,
   @Output() search = new EventEmitter();
 
   @ViewChild('autoCompleteInput', {static: false}) autoCompleteInput;
+  @ViewChild('matAutocomplete', {static: false}) matAutocomplete: MatAutocomplete;
 
   FormControlStatus: typeof FormControlStatus = FormControlStatus;
   objectKeys = Object.keys;
@@ -84,33 +87,45 @@ export class AutocompleteInputComponent implements ControlValueAccessor, OnInit,
     this.onTouchedCallback = fn;
   }
 
-  selected(e) {
+  add(e: MatChipInputEvent) {
+    const input = e.input;
+    const value = e.value;
+
+    if (this.matAutocomplete && !this.matAutocomplete.isOpen) {
+      if (this.multiple) {
+
+        if ((value || '').trim()) {
+          this.value.push(value.trim());
+        }
+
+        if (input) {
+          input.value = '';
+        }
+      } else {
+        this.value = value;
+        input.value = '';
+      }
+    }
+  }
+
+  selected(e: MatAutocompleteSelectedEvent) {
     if (this.multiple) {
       // should be cleaner
-      const found = this.value.find(item => {
-        return e.option ? item === e.option.value : item === e.value;
-      });
-      const isEmpty = e.option ? e.option.value === '' : e.value === '';
+      const itemExists = this.value.find(item => item === e.option.value);
+      const isEmpty = e.option.value === '';
 
-      if (found) {
-        if (e.option) {
-          this.remove(e.option.value);
-        } else {
-          this.remove(e.value);
-        }
+      if (itemExists) {
+        this.remove(e.option.value);
       }
+
       if (this.value.length < 1) {
         this.value = [];
+        this.label = [];
       }
+
       if (!isEmpty) {
-        if (e.option) {
-          if (e.option.value) {
-            this.value.push(e.option.value);
-            // this.options = [];
-          }
-        } else {
-          this.value.push(e.value);
-        }
+        this.value.push(e.option.value);
+        this.label.push(e.option.viewValue);
       }
 
       this.autoCompleteInput.nativeElement.value = null;
@@ -119,10 +134,20 @@ export class AutocompleteInputComponent implements ControlValueAccessor, OnInit,
       if (e.option) {
         if (e.option.value) {
           this.value = e.option.value;
+          this.label = e.option.viewValue;
           // this.options = [];
         }
       } else {
-        this.value = e.value;
+        // this is because of a bug in autocomplete:
+        // when user clicks on found result it does not fire select event correctly
+        let foundValuesInOptions;
+        if (this.optionValueLabels) {
+          foundValuesInOptions = this.options.find(o => o[this.optionValueLabels.label] === e.option.value);
+        } else {
+          foundValuesInOptions = this.options.find(o => o === e.option.value);
+        }
+
+        this.value = foundValuesInOptions ? foundValuesInOptions.value : e.option.value;
       }
     }
 
@@ -149,11 +174,7 @@ export class AutocompleteInputComponent implements ControlValueAccessor, OnInit,
 
   blur(e) {
     const textInputed = this.autoCompleteInput.nativeElement.value;
-    if (!textInputed) {
-      this.shouldAddOnBlur = false;
-    } else {
-      this.shouldAddOnBlur = true;
-    }
+    this.shouldAddOnBlur = !!textInputed;
   }
 
   ngOnInit() { }
