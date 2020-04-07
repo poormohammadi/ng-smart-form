@@ -10,6 +10,7 @@ import {
   MatCheckboxModule,
   MatChipsModule,
   MatDatepickerModule,
+  MatDialogModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
@@ -43,7 +44,8 @@ import { PERSIAN_DATE_FORMATS, PersianDateAdapter } from './classes/persian-date
     MatDatepickerModule,
     MatTooltipModule,
     MatCardModule,
-    CommonModule
+    MatDialogModule,
+    CommonModule,
   ],
   exports: [
     MatFormFieldModule,
@@ -61,6 +63,8 @@ import { PERSIAN_DATE_FORMATS, PersianDateAdapter } from './classes/persian-date
     MatAutocompleteModule,
     MatDatepickerModule,
     MatTooltipModule,
+    MatCardModule,
+    MatDialogModule,
     CommonModule
   ],
   providers: [

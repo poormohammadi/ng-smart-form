@@ -1,14 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnDestroy,
-  OnInit,
-  Output,
-  SimpleChanges,
-  ViewChild,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { AbstractControl, Form, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -22,13 +12,13 @@ import { FormSchemaItem } from '../../interfaces/form-schema-item';
   templateUrl: './smart-form.component.html',
   styleUrls: ['./smart-form.component.scss']
 })
-export class SmartFormComponent implements OnChanges, OnInit, OnDestroy {
+export class SmartFormComponent implements OnChanges, OnDestroy {
   // TODO: refactor this component and all its children
   valueChangesSubscription: Subscription;
 
   @ViewChild('form', { static: false }) form: Form;
 
-  @Input() jsonSchema: FormSchema;
+  @Input() jsonSchema: any; // TODO: refactor html side so interface could be FormSchema
   @Input() isInModal: boolean;
   @Input() fGroup: FormGroup;
   @Input() values: object;
@@ -41,7 +31,6 @@ export class SmartFormComponent implements OnChanges, OnInit, OnDestroy {
   @Input() submitTitle = 'Submit';
   @Input() additionalButtonTitle = 'Back';
   @Input() deleteTitle = 'Delete';
-  // @Input() layout: FormLayout = FormLayout.column;
   @Input() isButtonFullWidth: boolean;
 
   @Output() delete = new EventEmitter();
@@ -52,7 +41,6 @@ export class SmartFormComponent implements OnChanges, OnInit, OnDestroy {
   @Output() arrayAddClicked: EventEmitter<string> = new EventEmitter();
   @Output() removeFromArrayClicked = new EventEmitter();
 
-  // FormLayout = FormLayout;
   ObjectKeys = Object.keys;
   FormControlStatus = FormControlStatus;
   FormFieldTypes = FormFieldTypes;
@@ -121,8 +109,8 @@ export class SmartFormComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   onFormSubmitted = () => this.formSubmit.emit(this.fGroup.getRawValue());
-  onDelete = () => this.delete.emit(this.fGroup.value);
 
+  onDelete = () => this.delete.emit(this.fGroup.value);
 
   addToArray(item: string) {
     this.arrayAddClicked.emit(item);
@@ -130,10 +118,6 @@ export class SmartFormComponent implements OnChanges, OnInit, OnDestroy {
 
   removeFromArray(item: string) {
     this.removeFromArrayClicked.emit(item);
-  }
-
-  ngOnInit(): void {
-
   }
 
   ngOnDestroy(): void {
