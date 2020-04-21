@@ -10,7 +10,9 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { ErrorStateMatcher, MatChipInputEvent, MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material';
+import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material/autocomplete';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { FormFieldTypes } from '../../../interfaces/form-field-types.enum';
 import { FormControlStatus } from '../../../interfaces/form-control-status.enum';
 import { OptionValueLabels } from '../../../interfaces/option-value-labels';

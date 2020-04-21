@@ -1,4 +1,4 @@
-import { MatPaginatorIntl } from '@angular/material';
+import { MatPaginatorIntl } from '@angular/material/paginator';
 import { Injectable } from '@angular/core';
 
 // without the injectable phrase, the code does not build

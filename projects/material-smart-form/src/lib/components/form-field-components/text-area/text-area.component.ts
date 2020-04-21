@@ -1,6 +1,6 @@
 import { Component, forwardRef, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material';
+import { ErrorStateMatcher } from '@angular/material/core';
 
 import { Dir } from '../../../interfaces/dir.enum';
 import { FormControlStatus } from '../../../interfaces/form-control-status.enum';

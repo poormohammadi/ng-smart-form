@@ -1,5 +1,5 @@
 
-import { DateAdapter } from '@angular/material';
+import { DateAdapter } from '@angular/material/core';
 
 // TODO: solve jalali moment issue
 import * as jalaliMoment_ from 'jalali-moment';

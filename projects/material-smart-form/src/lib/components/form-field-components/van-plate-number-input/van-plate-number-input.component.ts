@@ -1,7 +1,7 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { FormControlStatus } from '../../../interfaces/form-control-status.enum';
-import { ErrorStateMatcher } from '@angular/material';
+import { ErrorStateMatcher } from '@angular/material/core';
 
 @Component({
   selector: 'lib-van-plate-number-input',

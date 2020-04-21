@@ -1,6 +1,7 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { ErrorStateMatcher, MatDatepickerInputEvent } from '@angular/material';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { DateFormatPipe } from 'angular2-moment';
 
 import { DateFormat } from '../../../interfaces/date-format.enum';
