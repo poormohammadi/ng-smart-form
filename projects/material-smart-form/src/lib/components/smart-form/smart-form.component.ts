@@ -16,7 +16,7 @@ export class SmartFormComponent implements OnChanges, OnDestroy {
   // TODO: refactor this component and all its children
   valueChangesSubscription: Subscription;
 
-  @ViewChild('form', { static: false }) form: Form;
+  @ViewChild('form') form: Form;
 
   @Input() jsonSchema: any; // TODO: refactor html side so interface could be FormSchema
   @Input() isInModal: boolean;

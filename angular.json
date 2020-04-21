@@ -15,7 +15,12 @@
             "tsConfig": "projects/material-smart-form/tsconfig.lib.json",
             "project": "projects/material-smart-form/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/material-smart-form/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -42,7 +47,7 @@
   "defaultProject": "material-smart-form",
   "schematics": {
     "@schematics/angular:component": {
-      "styleext": "scss"
+      "style": "scss"
     }
   }
 }

@@ -62,8 +62,8 @@ export class AutocompleteInputComponent implements ControlValueAccessor, OnInit,
   @Output() change = new EventEmitter();
   @Output() search = new EventEmitter();
 
-  @ViewChild('autoCompleteInput', {static: false}) autoCompleteInput;
-  @ViewChild('matAutocomplete', {static: false}) matAutocomplete: MatAutocomplete;
+  @ViewChild('autoCompleteInput') autoCompleteInput;
+  @ViewChild('matAutocomplete') matAutocomplete: MatAutocomplete;
 
   FormControlStatus: typeof FormControlStatus = FormControlStatus;
   objectKeys = Object.keys;
