@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
   BikePlateNumberInputComponent,
@@ -20,10 +21,9 @@ import {
   VanPlateNumberInputComponent,
 } from './components/form-field-components/van-plate-number-input/van-plate-number-input.component';
 import { FormFieldComponent } from './components/form-field/form-field.component';
+import { SmartFormComponent } from './components/smart-form/smart-form.component';
 import { MaterialModule } from './material/material.module';
 import { CamelCaseToHumanPipe } from './pipes/camel-case-to-human/camel-case-to-human.pipe';
-import { SmartFormComponent } from './components/smart-form/smart-form.component';
-
 
 @NgModule({
   declarations: [
@@ -47,6 +47,8 @@ import { SmartFormComponent } from './components/smart-form/smart-form.component
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    NoopAnimationsModule,
+    BrowserAnimationsModule,
   ],
   exports: [SmartFormComponent]
 })
