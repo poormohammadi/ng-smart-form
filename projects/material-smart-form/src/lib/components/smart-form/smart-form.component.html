@@ -2,8 +2,8 @@
 <mat-card *ngIf="fGroup">
   <form #form class="condense-container" [formGroup]="fGroup">
 
-    <div class="loading">
-      <mat-spinner *ngIf="isLoadingFormValues" [diameter]="30"></mat-spinner>
+    <div *ngIf="isLoadingFormValues" class="loading">
+      <mat-spinner [diameter]="30"></mat-spinner>
     </div>
 
     <ng-container *ngFor="let item of ObjectKeys(jsonSchema)">
