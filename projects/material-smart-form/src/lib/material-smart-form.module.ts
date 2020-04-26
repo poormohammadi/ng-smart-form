@@ -1,6 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
   BikePlateNumberInputComponent,
@@ -47,8 +47,7 @@ import { CamelCaseToHumanPipe } from './pipes/camel-case-to-human/camel-case-to-
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    NoopAnimationsModule,
-    BrowserAnimationsModule,
+    CommonModule,
   ],
   exports: [SmartFormComponent]
 })
