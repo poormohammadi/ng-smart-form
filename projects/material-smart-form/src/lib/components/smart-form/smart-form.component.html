@@ -2,126 +2,124 @@
 <mat-card *ngIf="fGroup">
   <form #form class="condense-container" [formGroup]="fGroup">
 
-    <mat-spinner class="loading" *ngIf="isLoadingFormValues"></mat-spinner>
+    <div class="loading">
+      <mat-spinner *ngIf="isLoadingFormValues" [diameter]="30"></mat-spinner>
+    </div>
 
-      <ng-container *ngFor="let item of ObjectKeys(jsonSchema)">
-        <br *ngIf="jsonSchema[item].isNewLine" />
-        <ng-container *ngIf="jsonSchema[item].type; else elseTemplate">
-          <ng-form-field *ngIf="fGroup['controls'][item]" [ngClass]="'col-' + jsonSchema[item].grow || 4"
-            [formControl]="fGroup['controls'][item]"
-            [placeholder]="jsonSchema[item]['placeholder'] || (item | camelCaseToHuman)" [type]="jsonSchema[item].type"
-            [options]="jsonSchema[item].options" [multiple]="jsonSchema[item].multiple"
-            [optionValueLabels]="jsonSchema[item].optionValueLabels" [dir]="jsonSchema[item].dir && jsonSchema[item].dir"
-            (change)="jsonSchema[item].onChange && jsonSchema[item].onChange($event)"
-            (search)="jsonSchema[item].onSearch && jsonSchema[item].onSearch($event)"
-            [dateOutputFormat]="jsonSchema[item].dateOutputFormat && jsonSchema[item].dateOutputFormat"
-            [outputFormat]="jsonSchema[item].outputFormat && jsonSchema[item].outputFormat"
-            [hint]="jsonSchema[item].hint && jsonSchema[item].hint"
-            [name]="item"
-            [required]="jsonSchema[item].required && jsonSchema[item].required">
-          </ng-form-field>
-        </ng-container>
+    <ng-container *ngFor="let item of ObjectKeys(jsonSchema)">
+      <br *ngIf="jsonSchema[item].isNewLine" />
+      <ng-container *ngIf="jsonSchema[item].type; else elseTemplate">
+        <ng-form-field *ngIf="fGroup['controls'][item]" [ngClass]="'col-' + jsonSchema[item].grow || 4"
+          [formControl]="fGroup['controls'][item]"
+          [placeholder]="jsonSchema[item]['placeholder'] || (item | camelCaseToHuman)" [type]="jsonSchema[item].type"
+          [options]="jsonSchema[item].options" [multiple]="jsonSchema[item].multiple"
+          [optionValueLabels]="jsonSchema[item].optionValueLabels" [dir]="jsonSchema[item].dir && jsonSchema[item].dir"
+          (change)="jsonSchema[item].onChange && jsonSchema[item].onChange($event)"
+          (search)="jsonSchema[item].onSearch && jsonSchema[item].onSearch($event)"
+          [dateOutputFormat]="jsonSchema[item].dateOutputFormat && jsonSchema[item].dateOutputFormat"
+          [outputFormat]="jsonSchema[item].outputFormat && jsonSchema[item].outputFormat"
+          [hint]="jsonSchema[item].hint && jsonSchema[item].hint" [name]="item"
+          [required]="jsonSchema[item].required && jsonSchema[item].required">
+        </ng-form-field>
+      </ng-container>
 
-        <ng-template #elseTemplate>
-          <!-- is array -->
-          <ng-container *ngIf="jsonSchema[item].length; else parentItem">
-            <p>
-              {{item | camelCaseToHuman}}:
-            </p>
-            <ng-container *ngFor="let jtem of jsonSchema[item]; let j = index">
-              <div class="box">
-
-                <br *ngIf="jsonSchema[item][j].isNewLine" />
-
-                <ng-container *ngFor="let jjtem of ObjectKeys(jsonSchema[item][j]); let jj = index">
-
-                  <ng-form-field [ngClass]="'col-' + jsonSchema[item][j][jjtem].grow || 4"
-                    *ngIf="fGroup['controls'][item]['controls'][j]['controls'][jjtem]"
-                    [formControl]="fGroup['controls'][item]['controls'][j]['controls'][jjtem]"
-                    [placeholder]="jsonSchema[item][j][jjtem]['placeholder'] || (jjtem | camelCaseToHuman)"
-                    [type]="jsonSchema[item][j][jjtem].type" [options]="jsonSchema[item][j][jjtem].options"
-                    [multiple]="jsonSchema[item][j][jjtem].multiple"
-                    [optionValueLabels]="jsonSchema[item][j][jjtem].optionValueLabels"
-                    [dir]="jsonSchema[item][j][jjtem].dir && jsonSchema[item][j][jjtem].dir"
-                    (change)="jsonSchema[item][j][jjtem].onChange && jsonSchema[item][j][jjtem].onChange($event)"
-                    (search)="jsonSchema[item].onSearch && jsonSchema[item].onSearch($event)"
-                    [dateOutputFormat]="jsonSchema[item][j][jjtem].dateOutputFormat && jsonSchema[item][j][jjtem].dateOutputFormat"
-                    [outputFormat]="jsonSchema[item].outputFormat && jsonSchema[item].outputFormat"
-                    [hint]="jsonSchema[item][j][jjtem].hint && jsonSchema[item][j][jjtem].hint"
-                    [name]="item[j][jjtem]"
-                    [required]="jsonSchema[item][j][jjtem].required && jsonSchema[item][j][jjtem].required">
-                  </ng-form-field>
-
-                </ng-container>
-              </div>
-            </ng-container>
-
-            <div class="array-btn-row">
-              <button class="add-btn" mat-raised-button color="primary" (click)="addToArray(item)">
-                + Add
-              </button>
-              <button class="remove-btn" mat-stroked-button color="warn" *ngIf="jsonSchema[item].length > 1"
-                (click)="removeFromArray(item)">
-                Remove
-              </button>
-            </div>
-          </ng-container>
-
-          <ng-template #parentItem>
-            <p>
-              {{item | camelCaseToHuman}}:
-            </p>
+      <ng-template #elseTemplate>
+        <!-- is array -->
+        <ng-container *ngIf="jsonSchema[item].length; else parentItem">
+          <p>
+            {{item | camelCaseToHuman}}:
+          </p>
+          <ng-container *ngFor="let jtem of jsonSchema[item]; let j = index">
             <div class="box">
-              <ng-container *ngFor="let jtem of ObjectKeys(jsonSchema[item])">
 
-                <br *ngIf="jsonSchema[item][jtem].isNewLine" />
+              <br *ngIf="jsonSchema[item][j].isNewLine" />
 
-                <ng-form-field *ngIf="fGroup['controls'][item]['controls'][jtem]"
-                  [ngClass]="'col-' + jsonSchema[item][jtem].grow || 4"
-                  [formControl]="fGroup['controls'][item]['controls'][jtem]"
-                  [placeholder]="jsonSchema[item][jtem]['placeholder'] || (jtem | camelCaseToHuman)"
-                  [type]="jsonSchema[item][jtem].type" [options]="jsonSchema[item][jtem].options"
-                  [multiple]="jsonSchema[item][jtem].multiple"
-                  [optionValueLabels]="jsonSchema[item][jtem].optionValueLabels"
-                  [dir]="jsonSchema[item][jtem].dir && jsonSchema[item][jtem].dir"
-                  (change)="jsonSchema[item][jtem].onChange && jsonSchema[item][jtem].onChange($event)"
+              <ng-container *ngFor="let jjtem of ObjectKeys(jsonSchema[item][j]); let jj = index">
+
+                <ng-form-field [ngClass]="'col-' + jsonSchema[item][j][jjtem].grow || 4"
+                  *ngIf="fGroup['controls'][item]['controls'][j]['controls'][jjtem]"
+                  [formControl]="fGroup['controls'][item]['controls'][j]['controls'][jjtem]"
+                  [placeholder]="jsonSchema[item][j][jjtem]['placeholder'] || (jjtem | camelCaseToHuman)"
+                  [type]="jsonSchema[item][j][jjtem].type" [options]="jsonSchema[item][j][jjtem].options"
+                  [multiple]="jsonSchema[item][j][jjtem].multiple"
+                  [optionValueLabels]="jsonSchema[item][j][jjtem].optionValueLabels"
+                  [dir]="jsonSchema[item][j][jjtem].dir && jsonSchema[item][j][jjtem].dir"
+                  (change)="jsonSchema[item][j][jjtem].onChange && jsonSchema[item][j][jjtem].onChange($event)"
                   (search)="jsonSchema[item].onSearch && jsonSchema[item].onSearch($event)"
-                  [dateOutputFormat]="jsonSchema[item][jtem].dateOutputFormat && jsonSchema[item][jtem].dateOutputFormat"
+                  [dateOutputFormat]="jsonSchema[item][j][jjtem].dateOutputFormat && jsonSchema[item][j][jjtem].dateOutputFormat"
                   [outputFormat]="jsonSchema[item].outputFormat && jsonSchema[item].outputFormat"
-                  [hint]="jsonSchema[item][jtem].hint && jsonSchema[item][jtem].hint"
-                  [name]="item"
-                  [required]="jsonSchema[item][jtem].required && jsonSchema[item][jtem].required">
+                  [hint]="jsonSchema[item][j][jjtem].hint && jsonSchema[item][j][jjtem].hint" [name]="item[j][jjtem]"
+                  [required]="jsonSchema[item][j][jjtem].required && jsonSchema[item][j][jjtem].required">
                 </ng-form-field>
 
               </ng-container>
             </div>
-          </ng-template>
-        </ng-template>
-      </ng-container>
+          </ng-container>
 
-      <div class="buttons" [ngClass]="{'full-width' : isButtonFullWidth}"
-        *ngIf="hasSubmit || hasDelete || isInModal || hasReset">
-        <button *ngIf='hasSubmit' (click)="onFormSubmitted()" mat-flat-button color="primary" type="submit"
-          [disabled]="fGroup.status === FormControlStatus.Invalid || isLoading">
-          <span *ngIf="isLoading">loading...</span>
-          <span *ngIf="!isLoading">{{submitTitle}}</span>
-        </button>
-        <button *ngIf="hasDelete" mat-flat-button color="warn" type="button" [disabled]="isLoading"
-          (click)="onDelete()">
-          <span>
-            {{deleteTitle}}
-          </span>
-        </button>
-        <button *ngIf="isInModal" mat-flat-button [mat-dialog-close]="false">
-          Close
-        </button>
-        <button *ngIf="hasReset" mat-flat-button (click)="formReset.emit()">
-          Reset
-        </button>
-        <button *ngIf="hasAdditionalButton" mat-flat-button (click)="additionalButtonClicked.emit()">
-          {{additionalButtonTitle}}
-        </button>
-      </div>
+          <div class="array-btn-row">
+            <button class="add-btn" mat-raised-button color="primary" (click)="addToArray(item)">
+              + Add
+            </button>
+            <button class="remove-btn" mat-stroked-button color="warn" *ngIf="jsonSchema[item].length > 1"
+              (click)="removeFromArray(item)">
+              Remove
+            </button>
+          </div>
+        </ng-container>
+
+        <ng-template #parentItem>
+          <p>
+            {{item | camelCaseToHuman}}:
+          </p>
+          <div class="box">
+            <ng-container *ngFor="let jtem of ObjectKeys(jsonSchema[item])">
+
+              <br *ngIf="jsonSchema[item][jtem].isNewLine" />
+
+              <ng-form-field *ngIf="fGroup['controls'][item]['controls'][jtem]"
+                [ngClass]="'col-' + jsonSchema[item][jtem].grow || 4"
+                [formControl]="fGroup['controls'][item]['controls'][jtem]"
+                [placeholder]="jsonSchema[item][jtem]['placeholder'] || (jtem | camelCaseToHuman)"
+                [type]="jsonSchema[item][jtem].type" [options]="jsonSchema[item][jtem].options"
+                [multiple]="jsonSchema[item][jtem].multiple"
+                [optionValueLabels]="jsonSchema[item][jtem].optionValueLabels"
+                [dir]="jsonSchema[item][jtem].dir && jsonSchema[item][jtem].dir"
+                (change)="jsonSchema[item][jtem].onChange && jsonSchema[item][jtem].onChange($event)"
+                (search)="jsonSchema[item].onSearch && jsonSchema[item].onSearch($event)"
+                [dateOutputFormat]="jsonSchema[item][jtem].dateOutputFormat && jsonSchema[item][jtem].dateOutputFormat"
+                [outputFormat]="jsonSchema[item].outputFormat && jsonSchema[item].outputFormat"
+                [hint]="jsonSchema[item][jtem].hint && jsonSchema[item][jtem].hint" [name]="item"
+                [required]="jsonSchema[item][jtem].required && jsonSchema[item][jtem].required">
+              </ng-form-field>
+
+            </ng-container>
+          </div>
+        </ng-template>
+      </ng-template>
+    </ng-container>
+
+    <div class="buttons" [ngClass]="{'full-width' : isButtonFullWidth}"
+      *ngIf="hasSubmit || hasDelete || isInModal || hasReset">
+      <button *ngIf='hasSubmit' (click)="onFormSubmitted()" mat-flat-button color="primary" type="submit"
+        [disabled]="fGroup.status === FormControlStatus.Invalid || isLoading">
+        <span *ngIf="isLoading">loading...</span>
+        <span *ngIf="!isLoading">{{submitTitle}}</span>
+      </button>
+      <button *ngIf="hasDelete" mat-flat-button color="warn" type="button" [disabled]="isLoading" (click)="onDelete()">
+        <span>
+          {{deleteTitle}}
+        </span>
+      </button>
+      <button *ngIf="isInModal" mat-flat-button [mat-dialog-close]="false">
+        Close
+      </button>
+      <button *ngIf="hasReset" mat-flat-button (click)="formReset.emit()">
+        Reset
+      </button>
+      <button *ngIf="hasAdditionalButton" mat-flat-button (click)="additionalButtonClicked.emit()">
+        {{additionalButtonTitle}}
+      </button>
+    </div>
 
   </form>
 </mat-card>
