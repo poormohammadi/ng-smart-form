@@ -11,7 +11,7 @@ import { TimeFormat } from '../../../interfaces/time-format.enum';
 const moment = moment_;
 
 @Component({
-  selector: 'lib-time-input',
+  selector: 'ng-time-input',
   templateUrl: './time-input.component.html',
   styleUrls: ['./time-input.component.scss'],
   providers: [

@@ -6,7 +6,7 @@ import { FormControlStatus } from '../../../interfaces/form-control-status.enum'
 import { FormFieldTypes } from '../../../interfaces/form-field-types.enum';
 
 @Component({
-  selector: 'lib-number-input',
+  selector: 'ng-number-input',
   templateUrl: './number-input.component.html',
   styleUrls: ['./number-input.component.scss'],
   providers: [

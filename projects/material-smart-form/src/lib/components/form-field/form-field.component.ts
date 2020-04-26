@@ -10,7 +10,7 @@ import { OptionValueLabels } from '../../interfaces/option-value-labels';
 import { TimeFormat } from '../../interfaces/time-format.enum';
 
 @Component({
-  selector: 'lib-form-field',
+  selector: 'ng-form-field',
   templateUrl: './form-field.component.html',
   styleUrls: ['./form-field.component.scss'],
   providers: [

@@ -9,7 +9,7 @@ import { OptionValueLabels } from '../../../interfaces/option-value-labels';
 
 
 @Component({
-  selector: 'lib-checkbox-input',
+  selector: 'ng-checkbox-input',
   templateUrl: './checkbox-input.component.html',
   styleUrls: ['./checkbox-input.component.scss'],
   providers: [

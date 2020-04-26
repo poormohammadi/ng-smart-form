@@ -7,7 +7,7 @@ import { FormFieldTypes } from '../../../interfaces/form-field-types.enum';
 
 
 @Component({
-  selector: 'lib-file-input',
+  selector: 'ng-file-input',
   templateUrl: './file-input.component.html',
   styleUrls: ['./file-input.component.scss'],
   providers: [

@@ -18,7 +18,7 @@ import { FormControlStatus } from '../../../interfaces/form-control-status.enum'
 import { OptionValueLabels } from '../../../interfaces/option-value-labels';
 
 @Component({
-  selector: 'lib-autocomplete-input',
+  selector: 'ng-autocomplete-input',
   templateUrl: './autocomplete-input.component.html',
   styleUrls: ['./autocomplete-input.component.scss'],
   providers: [

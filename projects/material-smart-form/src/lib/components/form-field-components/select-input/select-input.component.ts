@@ -8,7 +8,7 @@ import { FormFieldTypes } from '../../../interfaces/form-field-types.enum';
 import { OptionValueLabels } from '../../../interfaces/option-value-labels';
 
 @Component({
-  selector: 'lib-select-input',
+  selector: 'ng-select-input',
   templateUrl: './select-input.component.html',
   styleUrls: ['./select-input.component.scss'],
   providers: [

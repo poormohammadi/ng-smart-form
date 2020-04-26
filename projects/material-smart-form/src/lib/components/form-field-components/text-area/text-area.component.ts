@@ -9,7 +9,7 @@ import { FormControlStatus } from '../../../interfaces/form-control-status.enum'
 const noop = () => { };
 
 @Component({
-  selector: 'lib-text-area',
+  selector: 'ng-text-area',
   templateUrl: './text-area.component.html',
   styleUrls: ['./text-area.component.scss'],
   providers: [

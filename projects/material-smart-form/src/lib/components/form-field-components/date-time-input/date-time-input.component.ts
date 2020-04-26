@@ -11,7 +11,7 @@ import { FormFieldTypes } from '../../../interfaces/form-field-types.enum';
 
 
 @Component({
-  selector: 'lib-date-time-input',
+  selector: 'ng-date-time-input',
   templateUrl: './date-time-input.component.html',
   styleUrls: ['./date-time-input.component.scss'],
   providers: [

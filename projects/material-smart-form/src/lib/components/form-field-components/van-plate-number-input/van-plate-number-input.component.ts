@@ -4,7 +4,7 @@ import { FormControlStatus } from '../../../interfaces/form-control-status.enum'
 import { ErrorStateMatcher } from '@angular/material/core';
 
 @Component({
-  selector: 'lib-van-plate-number-input',
+  selector: 'ng-van-plate-number-input',
   templateUrl: './van-plate-number-input.component.html',
   styleUrls: ['./van-plate-number-input.component.scss'],
   providers: [

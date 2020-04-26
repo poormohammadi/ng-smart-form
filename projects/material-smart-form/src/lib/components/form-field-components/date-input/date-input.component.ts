@@ -10,7 +10,7 @@ import { FormControlStatus } from '../../../interfaces/form-control-status.enum'
 import { FormFieldTypes } from '../../../interfaces/form-field-types.enum';
 
 @Component({
-  selector: 'lib-date-input',
+  selector: 'ng-date-input',
   templateUrl: './date-input.component.html',
   styleUrls: ['./date-input.component.scss'],
   providers: [

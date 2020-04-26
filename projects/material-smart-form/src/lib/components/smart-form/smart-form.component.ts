@@ -8,7 +8,7 @@ import { FormSchema } from '../../interfaces/form-schema';
 import { FormSchemaItem } from '../../interfaces/form-schema-item';
 
 @Component({
-  selector: 'lib-smart-form',
+  selector: 'ng-smart-form',
   templateUrl: './smart-form.component.html',
   styleUrls: ['./smart-form.component.scss']
 })

@@ -5,7 +5,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { FormControlStatus } from '../../../interfaces/form-control-status.enum';
 
 @Component({
-  selector: 'lib-bike-plate-number-input',
+  selector: 'ng-bike-plate-number-input',
   templateUrl: './bike-plate-number-input.component.html',
   styleUrls: ['./bike-plate-number-input.component.scss'],
   providers: [

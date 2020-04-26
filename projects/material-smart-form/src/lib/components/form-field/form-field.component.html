@@ -1,62 +1,62 @@
 <!-- text , password  -->
-<lib-text-input *ngIf="type === types.Text || type === types.Password" [name]="name" [placeholder]="placeholder"
+<ng-text-input *ngIf="type === types.Text || type === types.Password" [name]="name" [placeholder]="placeholder"
   [hint]='hint' [required]="required" [status]=formControl.status [formControl]='formControl' [errorMatcher]='this'
-  [type]="type"></lib-text-input>
+  [type]="type"></ng-text-input>
 
 <!-- time  -->
-<lib-time-input *ngIf="type === types.Time" [name]="name" [placeholder]="placeholder" [hint]='hint'
+<ng-time-input *ngIf="type === types.Time" [name]="name" [placeholder]="placeholder" [hint]='hint'
   [required]="required" [status]=formControl.status [formControl]='formControl' [errorMatcher]='this' [type]="type"
-  [outputFormat]="outputFormat"></lib-time-input>
+  [outputFormat]="outputFormat"></ng-time-input>
 
 <!-- Text Area  -->
-<lib-text-area *ngIf="type === types.TextArea" [name]="name" [placeholder]="placeholder" [hint]='hint'
+<ng-text-area *ngIf="type === types.TextArea" [name]="name" [placeholder]="placeholder" [hint]='hint'
   [required]="required" [status]=formControl.status [formControl]='formControl' [errorMatcher]='this'>
-</lib-text-area>
+</ng-text-area>
 
 <!-- number -->
-<lib-number-input *ngIf="type === types.Number" [name]="name" [placeholder]="placeholder" [hint]='hint'
+<ng-number-input *ngIf="type === types.Number" [name]="name" [placeholder]="placeholder" [hint]='hint'
   [required]="required" [status]=formControl.status [formControl]='formControl' [errorMatcher]='this'>
-</lib-number-input>
+</ng-number-input>
 
 <!-- select -->
-<lib-select-input *ngIf="type === types.Select" [name]="name" [placeholder]="placeholder" [hint]='hint'
+<ng-select-input *ngIf="type === types.Select" [name]="name" [placeholder]="placeholder" [hint]='hint'
   [required]="required" [status]=formControl.status [formControl]='formControl' [errorMatcher]='this'
   [options]="options" [optionValueLabels]="optionValueLabels" (change)="change.emit($event)" [multiple]="multiple">
-</lib-select-input>
+</ng-select-input>
 
 <!-- checkbox -->
-<lib-checkbox-input *ngIf="type === types.Checkbox" [name]="name" [placeholder]="placeholder" [hint]='hint'
+<ng-checkbox-input *ngIf="type === types.Checkbox" [name]="name" [placeholder]="placeholder" [hint]='hint'
   [required]="required" [status]=formControl.status [formControl]='formControl' [errorMatcher]='this'
-  (change)="change.emit($event)"></lib-checkbox-input>
+  (change)="change.emit($event)"></ng-checkbox-input>
 
 <!-- file -->
-<lib-file-input *ngIf="type === types.File" [name]="name" [placeholder]="placeholder" [hint]='hint'
+<ng-file-input *ngIf="type === types.File" [name]="name" [placeholder]="placeholder" [hint]='hint'
   [required]="required" [status]=formControl.status [formControl]='formControl' [errorMatcher]='this'
-  (change)="change.emit($event)"></lib-file-input>
+  (change)="change.emit($event)"></ng-file-input>
 
 <!-- date -->
-<lib-date-input *ngIf="type === types.Date" [name]="name" [placeholder]="placeholder" [hint]='hint'
+<ng-date-input *ngIf="type === types.Date" [name]="name" [placeholder]="placeholder" [hint]='hint'
   [required]="required" [status]=formControl.status [formControl]='formControl' [errorMatcher]='this'
-  (change)="change.emit($event)" [dateOutputFormat]="dateOutputFormat"></lib-date-input>
+  (change)="change.emit($event)" [dateOutputFormat]="dateOutputFormat"></ng-date-input>
 
 <!-- datetime -->
-<lib-date-time-input *ngIf="type === types.Datetime" [name]="name" [placeholder]="placeholder" [hint]='hint'
+<ng-date-time-input *ngIf="type === types.Datetime" [name]="name" [placeholder]="placeholder" [hint]='hint'
   [required]="required" [status]=formControl.status [formControl]='formControl' [errorMatcher]='this'
-  (change)="change.emit($event)" [dateOutputFormat]="dateOutputFormat"></lib-date-time-input>
+  (change)="change.emit($event)" [dateOutputFormat]="dateOutputFormat"></ng-date-time-input>
 
 <!-- chips AutoComplete -->
-<lib-autocomplete-input *ngIf="type === types.AutoComplete" [name]="name" [placeholder]="placeholder" [hint]='hint'
+<ng-autocomplete-input *ngIf="type === types.AutoComplete" [name]="name" [placeholder]="placeholder" [hint]='hint'
   [required]="required" [status]=formControl.status [formControl]='formControl' [errorMatcher]='this'
   (change)="change.emit($event)" (search)="search.emit($event)" [options]="options" [multiple]="multiple"
   [optionValueLabels]="optionValueLabels">
-</lib-autocomplete-input>
+</ng-autocomplete-input>
 
 <!-- vanPlate  -->
-<lib-van-plate-number-input *ngIf="type === types.VanPlate" [name]="name" [placeholder]="placeholder" [hint]='hint'
+<ng-van-plate-number-input *ngIf="type === types.VanPlate" [name]="name" [placeholder]="placeholder" [hint]='hint'
   [required]="required" [status]=formControl.status [formControl]='formControl' [errorMatcher]='this'>
-</lib-van-plate-number-input>
+</ng-van-plate-number-input>
 
 <!-- bikePlate  -->
-<lib-bike-plate-number-input *ngIf="type === types.BikePlate" [name]="name" [placeholder]="placeholder" [hint]='hint'
+<ng-bike-plate-number-input *ngIf="type === types.BikePlate" [name]="name" [placeholder]="placeholder" [hint]='hint'
   [required]="required" [status]=formControl.status [formControl]='formControl' [errorMatcher]='this'>
-</lib-bike-plate-number-input>
+</ng-bike-plate-number-input>
