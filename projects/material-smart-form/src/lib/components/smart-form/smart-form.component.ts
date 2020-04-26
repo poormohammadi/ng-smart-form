@@ -16,29 +16,32 @@ export class SmartFormComponent implements OnChanges, OnDestroy {
   // TODO: refactor this component and all its children
   valueChangesSubscription: Subscription;
 
+  fGroup: FormGroup;
+
   @ViewChild('form') form: Form;
 
-  @Input() jsonSchema: any; // TODO: refactor html side so interface could be FormSchema
-  @Input() isInModal: boolean;
-  @Input() fGroup: FormGroup;
+  @Input() schema: any; // TODO: refactor html side so interface could be FormSchema
   @Input() values: object;
-  @Input() isLoading = false;
-  @Input() isLoadingFormValues = false;
+
+  @Input() isInModal = false;
+  @Input() isSubmitting = false;
+  @Input() isLoadingValues = false;
   @Input() hasDelete = false;
   @Input() hasReset = false;
   @Input() hasSubmit = true;
   @Input() hasAdditionalButton = false;
+  @Input() isButtonFullWidth = false;
+
   @Input() submitTitle = 'Submit';
   @Input() additionalButtonTitle = 'Back';
   @Input() deleteTitle = 'Delete';
-  @Input() isButtonFullWidth: boolean;
 
   @Output() delete = new EventEmitter();
   @Output() formSubmit = new EventEmitter();
   @Output() formChange = new EventEmitter();
   @Output() formReset = new EventEmitter();
   @Output() additionalButtonClicked = new EventEmitter();
-  @Output() arrayAddClicked: EventEmitter<string> = new EventEmitter();
+  @Output() arrayAddClicked = new EventEmitter<string>();
   @Output() removeFromArrayClicked = new EventEmitter();
 
   ObjectKeys = Object.keys;
@@ -47,7 +50,7 @@ export class SmartFormComponent implements OnChanges, OnDestroy {
 
   constructor() { }
 
-  private getObjForFormGroup(values, jsonSchema) {
+  private getObjForFormGroup(values: any, jsonSchema: any) {
     const obj: { [key: string]: AbstractControl } = {};
     if (values) {
       for (const item of Object.keys(jsonSchema)) {
@@ -87,7 +90,7 @@ export class SmartFormComponent implements OnChanges, OnDestroy {
               for (const jtem of Object.keys(jsonSchema[item])) {
                 objj[jtem] = new FormGroup(
                   this.getObjForFormGroup(values[item][jtem], jsonSchema[item][jtem])
-                ) as any;
+                );
               }
               const arr = [];
               for (const i of Object.keys(objj)) {
@@ -98,7 +101,7 @@ export class SmartFormComponent implements OnChanges, OnDestroy {
             } else {
               obj[item] = new FormGroup(
                 this.getObjForFormGroup(values[item], jsonSchema[item])
-              ) as any;
+              );
             }
           }
         }
@@ -108,7 +111,7 @@ export class SmartFormComponent implements OnChanges, OnDestroy {
     return new FormGroup(obj);
   }
 
-  onFormSubmitted = () => this.formSubmit.emit(this.fGroup.getRawValue());
+  onFormSubmit = () => this.formSubmit.emit(this.fGroup.getRawValue());
 
   onDelete = () => this.delete.emit(this.fGroup.value);
 
@@ -127,7 +130,7 @@ export class SmartFormComponent implements OnChanges, OnDestroy {
   ngOnChanges(changes: SimpleChanges): void {
     if (!this.fGroup || (changes.values) || (changes.jsonSchema)) {
 
-      this.fGroup = this.getFormGroupFromValues(this.values, this.jsonSchema);
+      this.fGroup = this.getFormGroupFromValues(this.values, this.schema);
 
       this.valueChangesSubscription = this.fGroup.valueChanges.subscribe(val => {
         this.formChange.emit(val);
