@@ -45,9 +45,9 @@
                   [optionValueLabels]="schema[item][j][jjtem].optionValueLabels"
                   [dir]="schema[item][j][jjtem].dir && schema[item][j][jjtem].dir"
                   (change)="schema[item][j][jjtem].onChange && schema[item][j][jjtem].onChange($event)"
-                  (search)="schema[item].onSearch && schema[item].onSearch($event)"
+                  (search)="schema[item][j][jjtem].onSearch && schema[item][j][jjtem].onSearch($event)"
                   [dateOutputFormat]="schema[item][j][jjtem].dateOutputFormat && schema[item][j][jjtem].dateOutputFormat"
-                  [outputFormat]="schema[item].outputFormat && schema[item].outputFormat"
+                  [outputFormat]="schema[item][j][jjtem].outputFormat && schema[item][j][jjtem].outputFormat"
                   [hint]="schema[item][j][jjtem].hint && schema[item][j][jjtem].hint" [name]="item[j][jjtem]"
                   [required]="schema[item][j][jjtem].required && schema[item][j][jjtem].required">
                 </ng-form-field>
@@ -84,9 +84,9 @@
                 [multiple]="schema[item][jtem].multiple" [optionValueLabels]="schema[item][jtem].optionValueLabels"
                 [dir]="schema[item][jtem].dir && schema[item][jtem].dir"
                 (change)="schema[item][jtem].onChange && schema[item][jtem].onChange($event)"
-                (search)="schema[item].onSearch && schema[item].onSearch($event)"
+                (search)="schema[item][jtem].onSearch && schema[item][jtem].onSearch($event)"
                 [dateOutputFormat]="schema[item][jtem].dateOutputFormat && schema[item][jtem].dateOutputFormat"
-                [outputFormat]="schema[item].outputFormat && schema[item].outputFormat"
+                [outputFormat]="schema[item][jtem].outputFormat && schema[item][jtem].outputFormat"
                 [hint]="schema[item][jtem].hint && schema[item][jtem].hint" [name]="item"
                 [required]="schema[item][jtem].required && schema[item][jtem].required">
               </ng-form-field>

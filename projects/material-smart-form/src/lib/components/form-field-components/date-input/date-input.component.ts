@@ -77,7 +77,7 @@ export class DateInputComponent implements ControlValueAccessor, OnInit {
 
   handleDatetimeFormat() {
     switch (this.dateOutputFormat) {
-      case DateFormat.LongDateShortTime:
+      case DateFormat.LongDateTime:
         this.value = DateFormatPipe.prototype.transform(
           this.timeStamp,
           'YYYY-MM-DD HH:mm:ss'
