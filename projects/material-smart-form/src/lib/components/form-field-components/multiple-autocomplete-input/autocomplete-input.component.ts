@@ -181,9 +181,9 @@ export class AutocompleteInputComponent implements ControlValueAccessor, OnInit,
   }
 
   getLabel(item: any): string {
-    const obj = this.options.find(i => i[this.optionKeyValues.value] === item);
-    if (obj == null || !this.optionKeyValues) { return; }
-    return obj[this.optionKeyValues.key];
+    const obj = this.options.find(i => i[this.optionValueLabels.value] === item);
+    if (obj == null || !this.optionValueLabels) { return; }
+    return obj[this.optionValueLabels.label];
   }
 
   ngOnInit() { }
