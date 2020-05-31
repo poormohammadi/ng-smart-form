@@ -2,7 +2,7 @@
     <mat-chip-list #chipList [formControl]="formControl">
       <ng-container *ngIf="multiple">
         <mat-chip *ngFor="let item of value; let i = index" (removed)="remove(item)">
-          {{item}} - {{label[i]}}
+          {{item}} - {{getLabel(item)}}
           <mat-icon matChipRemove>cancel</mat-icon>
         </mat-chip>
       </ng-container>

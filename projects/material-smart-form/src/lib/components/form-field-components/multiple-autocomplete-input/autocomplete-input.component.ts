@@ -10,11 +10,12 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material/autocomplete';
+import { MatAutocomplete, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { FormFieldTypes } from '../../../interfaces/form-field-types.enum';
+
 import { FormControlStatus } from '../../../interfaces/form-control-status.enum';
+import { FormFieldTypes } from '../../../interfaces/form-field-types.enum';
 import { OptionValueLabels } from '../../../interfaces/option-value-labels';
 
 @Component({
@@ -177,6 +178,12 @@ export class AutocompleteInputComponent implements ControlValueAccessor, OnInit,
   blur(e) {
     const textInputed = this.autoCompleteInput.nativeElement.value;
     this.shouldAddOnBlur = !!textInputed;
+  }
+
+  getLabel(item: any): string {
+    const obj = this.options.find(i => i[this.optionKeyValues.value] === item);
+    if (obj == null || !this.optionKeyValues) { return; }
+    return obj[this.optionKeyValues.key];
   }
 
   ngOnInit() { }
