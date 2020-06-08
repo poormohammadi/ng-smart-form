@@ -1,27 +1,61 @@
-# SmartForm
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
+# Angular Material Smart Form
 
-## Development server
+  
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This library is supposed to help developers make forms fast and easy. It is useful specially for admin dashboards in which customizing UI is not that imoportant.
 
-## Code scaffolding
+  
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Get Started
 
-## Build
+  
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+install the package
 
-## Running unit tests
+`npm install material-smart-form --save`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+import the module in your own module. 
+```
+@NgModule({
+	declarations: [
+		AppComponent
+	],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		MaterialSmartFormModule,
+	],
+	providers: [],
+	bootstrap: [AppComponent]
+})
 
-## Running end-to-end tests
+export  class  AppModule { }
+```
+The simplest usage of this component could be so:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+in you component's template file:
 
-## Further help
+`<ng-smart-form [schema]="formSchema" [values]="values" (formSubmit)="submit($event)"> </ng-smart-form>`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+and in your component:
+
+  
+
+```
+
+formSchema: FormSchema = {
+	name: {
+		type: FormFieldType.Text,
+	},
+}
+
+values: {
+	name: 'John',
+}
+
+submit(values: {name: string}) {
+	console.log(values);
+}
+
+```
