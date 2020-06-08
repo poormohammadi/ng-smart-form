@@ -10,7 +10,7 @@ install the package
 
 import the module in your own module.
 
-```
+```ts
 @NgModule({
 	declarations: [
 		AppComponent
@@ -33,11 +33,13 @@ The simplest usage of this component could be so:
 
 in you component's template file:
 
-`<ng-smart-form [schema]="formSchema" [values]="values" (formSubmit)="submit($event)"> </ng-smart-form>`
+```html
+<ng-smart-form [schema]="formSchema" [values]="values" (formSubmit)="submit($event)"> </ng-smart-form>
+```
 
 and in your component:
 
-```js
+```ts
 formSchema: FormSchema = {
 	name: {
 		type: FormFieldType.Text,
