@@ -53,9 +53,9 @@ values: {
 
 submit(values: {name: string}) {
   this.isSubmitting = true;
-	setTimeout(() => {
-    this.isSubmitting = false;
-  }, 2500);
+  setTimeout(() => {
+  this.isSubmitting = false;
+  }, timeout);
 }
 ```
 
