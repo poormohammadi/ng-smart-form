@@ -12,19 +12,12 @@ import the module in your own module.
 
 ```ts
 @NgModule({
-	declarations: [
-		AppComponent
-	],
-	imports: [
-		BrowserModule,
-		BrowserAnimationsModule,
-		MaterialSmartFormModule,
-	],
-	providers: [],
-	bootstrap: [AppComponent]
+  declarations: [AppComponent],
+  imports: [BrowserModule, BrowserAnimationsModule, MaterialSmartFormModule],
+  providers: [],
+  bootstrap: [AppComponent],
 })
-
-export  class  AppModule { }
+export class AppModule {}
 ```
 
 ## Usage
@@ -34,12 +27,20 @@ The simplest usage of this component could be so:
 in you component's template file:
 
 ```html
-<ng-smart-form [schema]="formSchema" [values]="values" (formSubmit)="submit($event)"> </ng-smart-form>
+<ng-smart-form
+  [schema]="formSchema"
+  [values]="values"
+  [isSubmitting]="isSubmitting"
+  (formSubmit)="submit($event)"
+>
+</ng-smart-form>
 ```
 
 and in your component:
 
 ```ts
+isSubmitting: boolean;
+
 formSchema: FormSchema = {
 	name: {
 		type: FormFieldType.Text,
@@ -51,6 +52,18 @@ values: {
 }
 
 submit(values: {name: string}) {
-	console.log(values);
+  this.isSubmitting = true;
+	setTimeout(() => {
+    this.isSubmitting = false;
+  }, 2500);
 }
+```
+
+## Demo
+
+```
+git clone https://github.com/poormohammadi/ng-smart-form.git
+cd ng-smart-form
+npm i
+npm start
 ```
