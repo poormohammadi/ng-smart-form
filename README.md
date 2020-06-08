@@ -43,7 +43,7 @@ isSubmitting: boolean;
 
 formSchema: FormSchema = {
 	name: {
-		type: FormFieldType.Text,
+		type: FormFieldTypes.Text,
 	},
 }
 
@@ -54,8 +54,8 @@ values: {
 submit(values: {name: string}) {
   this.isSubmitting = true;
   setTimeout(() => {
-  this.isSubmitting = false;
-  }, timeout);
+    this.isSubmitting = false;
+  }, 2000);
 }
 ```
 
