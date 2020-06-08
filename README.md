@@ -32,6 +32,9 @@ import the module in your own module.
 
 export  class  AppModule { }
 ```
+
+## Usage
+
 The simplest usage of this component could be so:
 
 in you component's template file:
