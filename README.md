@@ -37,8 +37,7 @@ in you component's template file:
 
 and in your component:
 
-```
-
+```js
 formSchema: FormSchema = {
 	name: {
 		type: FormFieldType.Text,
@@ -52,5 +51,4 @@ values: {
 submit(values: {name: string}) {
 	console.log(values);
 }
-
 ```
