@@ -42,13 +42,13 @@ and in your component:
 isSubmitting: boolean;
 
 formSchema: FormSchema = {
-name: {
-type: FormFieldTypes.Text,
-},
+	name: {
+		type: FormFieldTypes.Text,
+	},
 }
 
 values: {
-name: 'John',
+	name: 'John',
 }
 
 submit(values: {name: string}) {
