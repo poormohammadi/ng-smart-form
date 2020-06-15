@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { FormFieldTypes } from 'projects/material-smart-form/src/lib/interfaces/form-field-types.enum';
-import { FormSchema } from 'projects/material-smart-form/src/lib/interfaces/form-schema';
+import { FormFieldTypes, FormSchema } from 'projects/material-smart-form/src/public-api';
 
 @Component({
   selector: 'app-root',

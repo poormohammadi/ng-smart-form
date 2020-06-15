@@ -10,7 +10,7 @@
       (ngModelChange)='updateBikePlate()' maxlength="5" minlength="5" [errorStateMatcher]='errorMatcher'
       (focus)="onFocus()" (blur)="onBlur()" placeholder="11111">
   </div>
-  <button mat-icon-button matSuffix (click)='reset()' [disabled]='status === FormControlStatus.Disabled'
+  <button type="button" mat-icon-button matSuffix (click)='reset()' [disabled]='status === FormControlStatus.Disabled'
     [ngClass]="{'visible' : value}">
     <mat-icon>close</mat-icon>
   </button>
