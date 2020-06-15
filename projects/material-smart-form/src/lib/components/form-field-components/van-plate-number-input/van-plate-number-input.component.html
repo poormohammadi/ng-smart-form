@@ -23,7 +23,7 @@
       (ngModelChange)='updateVanPlate()' maxlength="2" minlength="2" (focus)="onFocus()" (blur)="onBlur()"
       placeholder="11">
   </div>
-  <button mat-icon-button matSuffix (click)='reset()' [disabled]='status === FormControlStatus.Disabled'
+  <button type="button" mat-icon-button matSuffix (click)='reset()' [disabled]='status === FormControlStatus.Disabled'
     [ngClass]="{'hidden' : !value}">
     <mat-icon>close</mat-icon>
   </button>
