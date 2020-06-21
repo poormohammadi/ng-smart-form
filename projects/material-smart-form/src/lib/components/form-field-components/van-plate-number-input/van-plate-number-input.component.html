@@ -5,7 +5,7 @@
   <div class="flex">
     <input [errorStateMatcher]="errorMatcher" matInput name="{{name}}" [(ngModel)]="first"
       [disabled]='status === FormControlStatus.Disabled' (ngModelChange)='updateVanPlate()' maxlength="2" minlength="2"
-      appMoveNextByMaxLength [required]="required" (focus)="onFocus()" (blur)="onBlur()" placeholder="11">
+      ngMoveNextByMaxLength [required]="required" (focus)="onFocus()" (blur)="onBlur()" placeholder="11">
     <span [ngClass]="{'plate-space' : isFocused}"></span>
     <mat-select [ngClass]="{'hidden' : !isFocused}" [disabled]='status === FormControlStatus.Disabled'
       (selectionChange)='updateVanPlate()' [(ngModel)]='second' class="palte-letter" (focus)="onFocus()"
@@ -16,7 +16,7 @@
     </mat-select>
     <span [ngClass]="{'plate-space' : isFocused}"></span>
     <input matInput [disabled]='status === FormControlStatus.Disabled' [(ngModel)]="third"
-      (ngModelChange)='updateVanPlate()' maxlength="3" minlength="3" appMoveNextByMaxLength (focus)="onFocus()"
+      (ngModelChange)='updateVanPlate()' maxlength="3" minlength="3" ngMoveNextByMaxLength (focus)="onFocus()"
       (blur)="onBlur()" placeholder="111">
     <span [ngClass]="{'plate-space' : isFocused}"></span>
     <input matInput [disabled]='status === FormControlStatus.Disabled' [(ngModel)]="fourth"

@@ -4,7 +4,7 @@
   <div class="flex">
     <input [errorStateMatcher]='errorMatcher' matInput name="{{name}}" [placeholder]="'111'" [(ngModel)]="first"
       [disabled]='status === FormControlStatus.Disabled' (ngModelChange)='updateBikePlate()' maxlength="3" minlength="3"
-      appMoveNextByMaxLength [required]="required" (focus)="onFocus()" (blur)="onBlur()">
+      ngMoveNextByMaxLength [required]="required" (focus)="onFocus()" (blur)="onBlur()">
     <span [ngClass]="{'visible' : isFocused}">-</span>
     <input matInput [disabled]='status === FormControlStatus.Disabled' [(ngModel)]="second"
       (ngModelChange)='updateBikePlate()' maxlength="5" minlength="5" [errorStateMatcher]='errorMatcher'
