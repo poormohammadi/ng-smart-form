@@ -55,7 +55,8 @@ label {
   }
 }
 div.hint {
-  position: absolute;
+  position: relative;
+  padding-bottom: 30px;
 
   img {
     max-width: 100px;

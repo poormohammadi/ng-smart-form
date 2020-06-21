@@ -28,7 +28,9 @@ button {
   transition: $transition;
 }
 .imghint {
-  position: absolute;
+  position: relative;
+  padding-bottom: 30px;
+
   img {
     max-width: 45px;
     position: absolute;
