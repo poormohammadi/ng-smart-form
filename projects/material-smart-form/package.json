@@ -1,6 +1,6 @@
 {
   "name": "material-smart-form",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "peerDependencies": {
     "@angular/common": "^8.2.14",
     "@angular/core": "^8.2.14"
@@ -8,5 +8,5 @@
   "repository": {
     "type": "git",
     "url": "git://github.com:poormohammadi/ng-smart-form.git"
-}
+  }
 }
