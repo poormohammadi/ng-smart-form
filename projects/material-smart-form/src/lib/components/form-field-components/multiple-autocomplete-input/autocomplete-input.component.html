@@ -1,37 +1,42 @@
 <mat-form-field>
-    <mat-chip-list #chipList [formControl]="formControl">
-      <ng-container *ngIf="multiple">
-        <mat-chip *ngFor="let item of value; let i = index" (removed)="remove(item)">
-          {{item}} - {{getLabel(item)}}
-          <mat-icon matChipRemove>cancel</mat-icon>
-        </mat-chip>
-      </ng-container>
-      <ng-container *ngIf="!multiple">
-        <mat-chip *ngIf="value" class="single-chip" (removed)="remove(value)">
-          <span *ngIf="label">
-            ({{value}}) - {{label}}
-          </span>
-          <span *ngIf="!label">
-            {{value}}
-          </span>
-          <mat-icon matChipRemove>cancel</mat-icon>
-        </mat-chip>
-      </ng-container>
+  <mat-chip-list #chipList [formControl]="formControl">
+    <ng-container *ngIf="multiple">
+      <mat-chip *ngFor="let item of value; let i = index" (removed)="remove(item)">
+        <ng-container *ngIf="getLabel(item) as label; else elseTemplate">
+          {{label}} - {{item}}
+        </ng-container>
+        <ng-template #elseTemplate>
+          {{item}}
+        </ng-template>
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+    </ng-container>
+    <ng-container *ngIf="!multiple">
+      <mat-chip *ngIf="value" class="single-chip" (removed)="remove(value)">
+        <span *ngIf="label">
+          {{label}} - ({{value}})
+        </span>
+        <span *ngIf="!label">
+          {{value}}
+        </span>
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+    </ng-container>
 
-      <input *ngIf="multiple || !value" placeholder="{{placeholder}}{{required && ' *'}}" [matAutocomplete]="auto"
-        [matChipInputFor]="chipList" (input)='input($event)' (matChipInputTokenEnd)="add($event)"
-        [matChipInputAddOnBlur]="true" (blur)="blur($event)" #autoCompleteInput>
-    </mat-chip-list>
-    <mat-hint>{{hint && hint}}</mat-hint>
+    <input *ngIf="multiple || !value" placeholder="{{placeholder}}{{required && ' *'}}" [matAutocomplete]="auto"
+      [matChipInputFor]="chipList" (input)='input($event)' (matChipInputTokenEnd)="add($event)"
+      [matChipInputAddOnBlur]="true" (blur)="blur($event)" #autoCompleteInput>
+  </mat-chip-list>
+  <mat-hint>{{hint && hint}}</mat-hint>
 
-    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-      <mat-option *ngFor="let item of options2" [value]="optionValueLabels ?
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+    <mat-option *ngFor="let item of options2" [value]="optionValueLabels ?
           (optionValueLabels.value ?
             (options[item] && options[item][optionValueLabels.value]) : options[item])
               : options[item]">
-        {{options[item]
+      {{options[item]
         && (optionValueLabels ? (optionValueLabels.label ? options[item][optionValueLabels.label] : options[item]) :
         options[item])}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

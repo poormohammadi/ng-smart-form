@@ -7,3 +7,23 @@ mat-chip{
 .section{
   margin: 0 0 10px;
 }
+.single-chip {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background: transparent;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+
+  &:hover {
+    background: transparent;
+  }
+
+  &:after {
+    background: transparent;
+  }
+
+  &:active {
+    box-shadow: none !important;
+  }
+}

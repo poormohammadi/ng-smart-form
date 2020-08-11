@@ -34,8 +34,7 @@ import { OptionValueLabels } from '../../../interfaces/option-value-labels';
 export class AutocompleteInputComponent implements ControlValueAccessor, OnInit, OnChanges {
 
   options2: string[];
-  shouldAddOnBlur: boolean;
-  label: any = [];
+  label: any;
 
   private innerValue: any;
   get value(): any {
@@ -97,9 +96,7 @@ export class AutocompleteInputComponent implements ControlValueAccessor, OnInit,
     if (this.matAutocomplete && !this.matAutocomplete.isOpen) {
       if (this.multiple) {
 
-        if ((value || '').trim()) {
-          this.value.push(value.trim());
-        }
+        this.value.push(value.trim());
 
         if (input) {
           input.value = '';
@@ -159,25 +156,36 @@ export class AutocompleteInputComponent implements ControlValueAccessor, OnInit,
 
   remove(e) {
     if (this.multiple) {
-      this.value.splice(this.value.indexOf(e), 1);
+      const index = this.value.indexOf(e);
+      this.value.splice(index, 1);
+      this.label.splice(index, 1);
     } else {
       this.value = null;
+      this.label = null;
     }
   }
 
   input(e) {
     const textInputed = this.autoCompleteInput.nativeElement.value;
-    if (!textInputed) {
-      this.shouldAddOnBlur = false;
-    } else {
-      this.shouldAddOnBlur = true;
-    }
     this.search.emit(e.target.value);
   }
 
   blur(e) {
     const textInputed = this.autoCompleteInput.nativeElement.value;
-    this.shouldAddOnBlur = !!textInputed;
+    if (textInputed) {
+
+      if (this.multiple) {
+
+        this.value.push(textInputed.trim());
+
+        if (textInputed) {
+          this.autoCompleteInput.nativeElement.value = '';
+        }
+      } else {
+        this.value = textInputed;
+        this.autoCompleteInput.nativeElement.value = '';
+      }
+    }
   }
 
   getLabel(item: any): string {
@@ -186,7 +194,9 @@ export class AutocompleteInputComponent implements ControlValueAccessor, OnInit,
     return obj[this.optionValueLabels.label];
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.label = this.multiple ? [] : null;
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.options) {
