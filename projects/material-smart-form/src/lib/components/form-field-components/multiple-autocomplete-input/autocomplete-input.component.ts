@@ -189,7 +189,7 @@ export class AutocompleteInputComponent implements ControlValueAccessor, OnInit,
   }
 
   getLabel(item: any): string {
-    const obj = this.options.find(i => i[this.optionValueLabels.value] && i[this.optionValueLabels.value] === item);
+    const obj = this.options.find(i => i && i[this.optionValueLabels.value] && i[this.optionValueLabels.value] === item);
     if (obj == null || !this.optionValueLabels || !this.options.length) { return; }
     return obj[this.optionValueLabels.label];
   }
