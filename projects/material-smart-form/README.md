@@ -1,24 +1,69 @@
-# MaterialSmartForm
+# Angular Material Smart Form
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.14.
+This library is supposed to help developers make forms fast and easy. It is useful specially for admin dashboards in which customizing UI is not that imoportant.
 
-## Code scaffolding
+## Get Started
 
-Run `ng generate component component-name --project material-smart-form` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project material-smart-form`.
-> Note: Don't forget to add `--project material-smart-form` or else it will be added to the default project in your `angular.json` file. 
+install the package
 
-## Build
+`npm install material-smart-form --save`
 
-Run `ng build material-smart-form` to build the project. The build artifacts will be stored in the `dist/` directory.
+import the module in your own module.
 
-## Publishing
+```ts
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, BrowserAnimationsModule, MaterialSmartFormModule],
+  providers: [],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
 
-After building your library with `ng build material-smart-form`, go to the dist folder `cd dist/material-smart-form` and run `npm publish`.
+## Usage
 
-## Running unit tests
+The simplest usage of this component could be so:
 
-Run `ng test material-smart-form` to execute the unit tests via [Karma](https://karma-runner.github.io).
+in you component's template file:
 
-## Further help
+```html
+<ng-smart-form
+  [schema]="formSchema"
+  [values]="values"
+  [isSubmitting]="isSubmitting"
+  (formSubmit)="submit($event)"
+>
+</ng-smart-form>
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+and in your component:
+
+```ts
+isSubmitting: boolean;
+
+formSchema: FormSchema = {
+	name: {
+		type: FormFieldTypes.Text,
+	},
+}
+
+values: {
+	name: 'John',
+}
+
+submit(values: {name: string}) {
+  this.isSubmitting = true;
+  setTimeout(() => {
+    this.isSubmitting = false;
+  }, 2000);
+}
+```
+
+## Demo
+
+```
+git clone https://github.com/poormohammadi/ng-smart-form.git
+cd ng-smart-form
+npm i
+npm start
+```
